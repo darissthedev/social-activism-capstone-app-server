@@ -24,6 +24,9 @@ const AuthService = {
       .toString()
       .split(':');
   },
+  hashPassword(password){
+    return bcrypt.hash(password, 12);
+  },
 };
 
 module.exports = AuthService;
