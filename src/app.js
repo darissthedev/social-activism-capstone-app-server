@@ -10,6 +10,7 @@ const errorHandler = require('./middleware/error-handler');
 const pancakeRouter = require('./pancake/pancake-router');
 const userRouter = require('./users/user-router');
 const authRouter = require('./auth/auth-router');
+const postRouter = require('./posts/posts-router');
 
 
 const app = express();
@@ -30,6 +31,7 @@ app.use('/api/auth', authRouter);
 
 app.use('/api/pancakes', pancakeRouter);
 app.use('/api/users', userRouter);
+app.use('/api/create-post', postRouter);
 app.use(errorHandler);
 
 module.exports = app;

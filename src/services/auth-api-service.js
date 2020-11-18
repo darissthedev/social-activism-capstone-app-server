@@ -18,3 +18,6 @@ const AuthApiService = {
 };
 
 export default AuthApiService;
+
+// dedicated service for articles with different endpoint { /post-articles} recieve fetch post request 
+// another service for database service -- save in database auth token supplied from (should be public)
