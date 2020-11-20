@@ -2,7 +2,8 @@ const AuthService = require('../auth/auth-service');
 
 function requireAuth(req, res, next) {
   const authToken = req.get('Authorization') || '';
-  
+  console.log(authToken);
+
   let basicToken;
   if (!authToken.toLowerCase().startsWith('basic ')) {
     return res.status(401).json({ error: 'Missing basic token' });
@@ -11,11 +12,12 @@ function requireAuth(req, res, next) {
   }
   
   const [tokenEmail, tokenPassword] = AuthService.parseBasicToken(basicToken);
-  
+  console.log(tokenEmail, tokenPassword);
+
   if (!tokenEmail || !tokenPassword) {
     return res.status(401).json({ error: 'Unauthorized request' });
   }
-  AuthService.getUserWithUserName(
+  AuthService.getUserWithEmail(
     req.app.get('db'),
     tokenEmail
   )

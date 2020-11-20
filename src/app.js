@@ -31,7 +31,7 @@ app.use('/api/auth', authRouter);
 
 app.use('/api/pancakes', pancakeRouter);
 app.use('/api/users', userRouter);
-app.use('/api/create-post', postRouter);
+app.use('/api/post', postRouter);
 app.use(errorHandler);
 
 module.exports = app;

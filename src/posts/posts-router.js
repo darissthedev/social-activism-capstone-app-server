@@ -1,7 +1,9 @@
 const express = require('express');
 const xss = require('xss');
-const PostService = require('./post-service');
+const PostService = require('./posts-service');
 const { hashPassword } = require('../auth/auth-service');
+const { requireAuth } = require('../middleware/jwt-auth');
+const path = require('path');
 
 const postRouter = express.Router();
 const jsonParser = express.json();
@@ -30,8 +32,9 @@ postRouter
       })
       .catch(next);
   })
-    //relevant
-  .post(jsonParser, (req, res, next) => {
+//relevant
+  .post(requireAuth, jsonParser, (req, res, next) => {
+    
 
     //take the input from the user
     const {
@@ -41,9 +44,10 @@ postRouter
       event_location,
       event_type
     } = req.body;
-    const newPancake = {
+    const newPost = {
+      users_id: req.user.id,
       event_title,
-      event_date,
+      event_date: new Date(event_date),
       event_description,
       event_location,
       event_type
@@ -78,6 +82,18 @@ postRouter
       .catch(next);
   });
 
+postRouter
+  .route('/:post_id')
+  .all(requireAuth)
+  .all((req, res, next) => {
+    if (isNaN(parseInt(req.params.post_id))) {
+      //if there is an error show it
+      return res.status(404).json({
+        error: {
+          message: 'Invalid id'
+        }
+      });
+    } 
     //connect to the service to get the data
     PostService.getPostById(
       req.app.get('db'),

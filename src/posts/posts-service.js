@@ -3,7 +3,9 @@ const PostService = {
   getPosts(db) {
     return db
       .select('*')
-      .from('posts');
+      .from('posts')
+      .orderBy('id', 'desc')
+      .limit(10);
   },
   getPostById(db, post_id) {
     return db
