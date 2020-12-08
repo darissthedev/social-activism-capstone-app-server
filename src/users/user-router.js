@@ -11,7 +11,6 @@ const serializeUser = user => ({
   id: user.id,
   full_name: xss(user.full_name),
   email: xss(user.email),
-  password: xss(user.password) ,
   account_type: xss(user.account_type),
   organization_name: xss(user.organization_name)
 });

@@ -15,9 +15,9 @@ describe('User API:', function() {
     app.set('db', db);
   });
 
-  before('cleanup', () => db.raw('TRUNCATE TABLE users RESTART IDENTITY;'));
+  before('cleanup', () => db.raw('TRUNCATE TABLE comments, posts, users RESTART IDENTITY;'));
 
-  afterEach('cleanup', () => db.raw('TRUNCATE TABLE users RESTART IDENTITY;'));
+  afterEach('cleanup', () => db.raw('TRUNCATE TABLE comments, posts, users RESTART IDENTITY;'));
 
   after('disconnect from the database', () => db.destroy());
 
@@ -38,13 +38,10 @@ describe('User API:', function() {
         .expect(201)
         .expect(res => {
           expect(res.body).to.be.a('object');
-          expect(res.body).to.include('id', 'full_name', 'email', 'password', 'account_type');
           expect(res.body.id).to.equal(newUser.id);
           expect(res.body.full_name).to.equal(newUser.full_name);
           expect(res.body.email).to.equal(newUser.email);
-          expect(res.body.password).to.equal(newUser.password);
           expect(res.body.account_type).to.equal(newUser.account_type);
-          expect(res.headers.location).to.equal(`/api/users/${res.body.id}`);
         });
     });
 
