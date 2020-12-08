@@ -5,7 +5,7 @@ const users = [
     'full_name': 'bobby jackson',
     'email': 'test@test.com',
     'password': 'password123',
-    'account_type': 'BD Jenkins'},
+    'account_type': 'personal'},
 
   {
     'id': 2,

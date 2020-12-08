@@ -16,11 +16,10 @@ describe('Pancake API:', function() {
   before('cleanup', () => db.raw('TRUNCATE TABLE pancake RESTART IDENTITY;'));
 
   afterEach('cleanup', () => db.raw('TRUNCATE TABLE pancake RESTART IDENTITY;'));
-
+  
   after('disconnect from the database', () => db.destroy());
-
-  describe('GET all pancakes', () => {
-
+  
+  describe('GET all pancakes', () => { //describe all test related to getting...
     beforeEach('insert some pancakes', () => {
       return db('pancake').insert(pancakes);
     });
