@@ -1,29 +1,9 @@
 const knex = require('knex');
 const app = require('../src/app');
+const { pancakes } = require('./fixtures');
 
 describe('Pancake API:', function() {
   let db;
-  let pancakes = [{
-    'title': 'French Crepes',
-    'completed': false
-  },
-  {
-    'title': 'Danish Aebleskiver',
-    'completed': true
-  },
-  {
-    'title': 'Italian Crespelle',
-    'completed': false
-  },
-  {
-    'title': 'Indonesian Serabi',
-    'completed': true
-  },
-  {
-    'title': 'Moroccan Msemen',
-    'completed': false
-  }
-  ];
 
   before('make knex instance', () => {
     db = knex({
