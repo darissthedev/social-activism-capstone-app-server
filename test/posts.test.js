@@ -53,7 +53,7 @@ describe('Posts API:', function() {
         'event_type': 'sit in',
         'event_date': '2017-03-26 10:10:10-05:00',
         'event_location': 'city hall'
-      }; //loggin my self in and getting a token as I would do in front-end (body should match what i would send from front-end)
+      }; 
 
       return supertest(app)
         .post('/api/post')
@@ -66,8 +66,6 @@ describe('Posts API:', function() {
           expect(res.body.event_title).to.equal(newPost.event_title);
           expect(res.body.event_description).to.equal(newPost.event_description);
           expect(res.body.event_type).to.equal(newPost.event_type);
-          //expect(res.body.event_date).to.equal(newPost.event_date);
-          //check that it has a date prop and id (not specific)
           expect(res.body.event_location).to.equal(newPost.event_location);
         }); 
     });
@@ -80,9 +78,6 @@ describe('Posts API:', function() {
         .expect(res => {
           expect(res.body).to.be.an('object');
           expect(res.body).to.include.keys('id', 'user_id', 'event_title');
-          // expect(res.body.id).to.equal(doc.id);
-          // expect(res.body.title).to.equal(doc.title);
-          //   expect(res.body.completed).to.equal(doc.completed);
         });
     });
 
