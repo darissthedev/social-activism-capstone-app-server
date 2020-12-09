@@ -1,6 +1,10 @@
+const { expect } = require('chai');
 const knex = require('knex');
+const supertest = require('supertest');
 const app = require('../src/app');
 const { posts, users } = require('./fixtures'); 
+// const JWT = require('jsonwebtoken');
+const AuthService = require('../src/auth/auth-service');
 
 describe('Posts API:', function() {
   let db;
@@ -37,8 +41,55 @@ describe('Posts API:', function() {
           });
         });
     });
-  });
-  it('')
+    it('should create a new post only for an authorized user', function() {
+
+      const authToken = AuthService.createJwt(users[1].email, {});
+      
+      const newPost = {
+        // 'id': 1,
+        'users_id': 1,
+        'event_title': 'The Block',
+        'event_description': 'we will rally outside city hall',
+        'event_type': 'sit in',
+        'event_date': '2017-03-26 10:10:10-05:00',
+        'event_location': 'city hall'
+      }; //loggin my self in and getting a token as I would do in front-end (body should match what i would send from front-end)
+
+      return supertest(app)
+        .post('/api/post')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send(newPost)
+        .expect(201)
+        .expect(res => {
+          expect(res.body).to.be.a('object');
+          expect(res.body.users_id).to.equal(2);
+          expect(res.body.event_title).to.equal(newPost.event_title);
+          expect(res.body.event_description).to.equal(newPost.event_description);
+          expect(res.body.event_type).to.equal(newPost.event_type);
+          //expect(res.body.event_date).to.equal(newPost.event_date);
+          //check that it has a date prop and id (not specific)
+          expect(res.body.event_location).to.equal(newPost.event_location);
+        }); 
+    });
 
 
+    it('should respond to GET `/api/post/id` with a post and status 200', function() {
+      return supertest(app)
+        .get('/api/post/2')
+        .expect(200)
+        .expect(res => {
+          expect(res.body).to.be.an('object');
+        //   expect(res.body).to.include.keys('id', 'user_id', 'event_title');
+          // expect(res.body.id).to.equal(doc.id);
+          // expect(res.body.title).to.equal(doc.title);
+          //   expect(res.body.completed).to.equal(doc.completed);
+        });
+
+ 
+
+
+
+
+    });
+  }); 
 });

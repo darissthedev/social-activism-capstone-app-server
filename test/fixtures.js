@@ -42,10 +42,18 @@ const users = [
     'password': 'password123',
     'account_type': 'organization'}
 ];
-
+// const newPost = {
+//   'id': 900,
+//   'users_id': 434,
+//   'event_title': 'The Block',
+//   'event_description': 'we will rally outside city hall',
+//   'event_type': 'sit in',
+//   'event_date': '2017-03-26 10:10:10-05:00',
+//   'event_location': 'city hall'
+// };
 const posts = [
   {
-    'id': 1,
+    'id': 101,
     'users_id': 1,
     'event_title': 'The Block',
     'event_description': 'we will rally outside city hall',
@@ -54,7 +62,7 @@ const posts = [
     'event_location': 'city hall'
   },
   {
-    'id': 2,
+    'id': 102,
     'users_id': 2,
     'event_title': 'Target',
     'event_description': 'we will rally outside target',
@@ -63,7 +71,7 @@ const posts = [
     'event_location': 'target'
   },
   {
-    'id': 3,
+    'id': 103,
     'users_id': 3,
     'event_title': 'House',
     'event_description': 'we will rally outside house',
@@ -72,7 +80,7 @@ const posts = [
     'event_location': 'house'
   },
   {
-    'id': 4,
+    'id': 104,
     'users_id': 4,
     'event_title': 'Police Station',
     'event_description': 'we will rally outside police station',
@@ -81,7 +89,7 @@ const posts = [
     'event_location': 'downtown metro station'
   },
   {
-    'id': 5,
+    'id': 105,
     'users_id': 5,
     'event_title': 'Wallgreens',
     'event_description': 'we will rally outside walgreens',
@@ -90,7 +98,7 @@ const posts = [
     'event_location': 'walgreens'
   },
   {
-    'id': 6,
+    'id': 106,
     'users_id': 6,
     'event_title': '7/11',
     'event_description': 'we will rally outside 7/11',
@@ -166,5 +174,6 @@ module.exports = {
   users,
   pancakes,
   posts,
-  comments
+  comments,
+//   newPost
 }; 
