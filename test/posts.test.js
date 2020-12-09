@@ -75,21 +75,37 @@ describe('Posts API:', function() {
 
     it('should respond to GET `/api/post/id` with a post and status 200', function() {
       return supertest(app)
-        .get('/api/post/2')
+        .get('/api/post/${1}')
         .expect(200)
         .expect(res => {
           expect(res.body).to.be.an('object');
-        //   expect(res.body).to.include.keys('id', 'user_id', 'event_title');
+          expect(res.body).to.include.keys('id', 'user_id', 'event_title');
           // expect(res.body.id).to.equal(doc.id);
           // expect(res.body.title).to.equal(doc.title);
           //   expect(res.body.completed).to.equal(doc.completed);
         });
+    });
 
- 
+    it('should delete a post', function() {
+      return supertest(app)
+        .delete(`/api/post/${1}`)
+        .expect(204);
+    });
 
-
-
-
+    it('should update (PATCH) a post', function() {
+      const item = {
+        'event_title': 'American Pancakes'
+      };
+      return supertest(app)
+        .patch(`/api/post/${1}`)
+        .send(item)
+        .expect(200)
+        .expect(res => {
+          expect(res.body).to.be.a('object');
+          expect(res.body).to.include.keys('id', 'event_title');
+          expect(res.body.title).to.equal(item.event_title);
+          expect(res.body.completed).to.be.false;
+        });
     });
   }); 
 });
