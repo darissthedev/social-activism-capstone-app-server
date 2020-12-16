@@ -7,7 +7,7 @@ const {
   NODE_ENV
 } = require('./config');
 const errorHandler = require('./middleware/error-handler');
-const pancakeRouter = require('./pancake/pancake-router');
+// const pancakeRouter = require('./pancake/pancake-router');
 const userRouter = require('./users/user-router');
 const authRouter = require('./auth/auth-router');
 const postRouter = require('./posts/posts-router');
@@ -29,7 +29,7 @@ app.use(express.static('public'));
 
 app.use('/api/auth', authRouter);
 
-app.use('/api/pancakes', pancakeRouter);
+// app.use('/api/pancakes', pancakeRouter);
 app.use('/api/users', userRouter);
 app.use('/api/post', postRouter);
 app.use(errorHandler);
