@@ -11,7 +11,7 @@ const PostService = {
     return db
       .select('*')
       .from('posts')
-      .where('post.id', post_id)
+      .where('posts.id', post_id)
       .first();
   },
   //relevant
