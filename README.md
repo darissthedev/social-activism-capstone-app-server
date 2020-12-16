@@ -57,9 +57,6 @@ The app's functionality includes:
 
 
 
-
-
-
 ### 4. Technology (done)
 * Front-End: HTML5, CSS3, JavaScript ES6, React
 * Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
@@ -67,40 +64,8 @@ The app's functionality includes:
 
 
 
-### 5. Wireframes (done)
-Landing Page
-:-------------------------:
-![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
-Sign Up Page
-![Sign Up Page](/github-images/wireframes/sign-up-page-wireframe.png)
-Log In Page
-![Log In Page](/github-images/wireframes/log-in-page-wireframe.png)
-About Us Page
-![About Us Page](/github-images/wireframes/about-page-wireframe.png)
-Dashboard Page
-![Dashboard Page](/github-images/wireframes/dashboard-page-wireframe.png)
-Create Post Page
-![Create Post Page](/github-images/wireframes/create-post-page-wireframe.png)
-Exaplore Feed Page
-![Explore Feed Page](/github-images/wireframes/explore-feed-page-wireframe.png)
 
-
-
-### 6. Front-end Structure - React Components Map (done)
-* __Index.js__ (stateless)
-    * __App.js__ (stateful)
-        * __LandingPage.js__ (stateless) - leads to 'about us' and 'sing up/ log in' components (front-end)
-            * __LogIn.js__ (stateful) - interacts with users table (back-end) to validate users
-            * __SignUp.js__ (stateful) - interacts with user table (to post new user info) (back-end)
-        * __AboutUs.js__ (stateless) - leads to 'sign up' and 'log in' components (front-end)
-        * __Dashboard.js__ (stateless) - displays list of posts (front-end)
-            * __TopNav.js__ (stateless) - routes to components
-        * __ExploreFeed.js__ (stateless) - displays user posts (front-end)
-        * __CreatePost.js__ (stateful) - interacts with posts table (to post new user posts) (back-end)
-
-
-
-### 7. Back-end Structure - Business Objects (done)
+### 5. Back-end Structure - Business Objects (done)
 * Users (database table)
     * id (auto-generated)
     * fullname var char 255 (at least 3 chars)
@@ -133,22 +98,14 @@ API Documentation details:
 
 
 
-### 9. Screenshots (to do later)
-(Example) Landing Page
-:-------------------------:
-![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
-Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
 
-
-
-### 10. Development Roadmap (to do later)
+### 9. Development Roadmap (to do later)
 This is v1.0 of the app, but future enhancements are expected to include:
 * (Example) add more functionality
 
 
 
-### 11. How to run it (done)
+### 10. How to run it (done)
 Use command line to navigate into the project folder and run the following in terminal
 
 ##### Local React scripts
